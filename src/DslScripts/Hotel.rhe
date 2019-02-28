@@ -8,6 +8,8 @@ Module Hotels
 
     Entity Room
     {
+        Extends Hotels.Reservation;
+
         Integer RoomNumber {Unique; Required;}
         Reference Hotel {Detail;}
         Reference RoomType {Detail;}
@@ -21,7 +23,7 @@ Module Hotels
 
     Entity Reservation
     {
-        Extends Hotels.Guest;
+        
 
         Bool Reserved {Required;}
         Date CheckIn;
