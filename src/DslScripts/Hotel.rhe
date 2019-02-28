@@ -1,0 +1,66 @@
+Module Hotels
+{
+    Entity Hotel
+    {
+        ShortString HotelName {Required;}
+        ShortString HotelAdress {Required;}
+    }
+
+    Entity Room
+    {
+        Integer RoomNumber {Unique; Required;}
+        Reference Hotel {Detail;}
+        Reference RoomType {Detail;}
+    }
+    
+    Entity RoomType
+    {
+        ShortString TypeName {Required;}
+        Money RoomCostPerNight {Required;}
+    }
+
+    Entity Reservation
+    {
+        Extends Hotels.Guest;
+
+        Bool Reserved {Required;}
+        Date CheckIn;
+        Date CheckOut;
+        Reference Room;
+        
+    }
+    
+    Entity Guest
+    {
+        Extends Hotels.Reservation;
+
+        ShortString FirstName;
+        ShortString LastName;
+        ShortString Adress; 
+        ShortString Email;
+    }
+
+    Entity Receipt
+    {
+        Bool Paid;
+        Money AmmountTotal;
+        Money AmmountOwing; 
+        Reference Reservation;
+    }
+
+    Entity AccountItem 
+    {
+        Integer Qunatity;
+
+        Reference Receipt;
+        Reference Service;
+
+        UniqueMultiple 'Receipt Service';
+    }
+
+    Entity Service
+    {
+        Money ServicePrice;
+        ShortString ServiceName;
+    }
+}
