@@ -2,34 +2,29 @@ Module Hotels
 {
     Entity Hotel
     {
-        ShortString HotelName {Required;}
-        ShortString HotelAdress {Required;}
+        ShortString HotelName;
+        ShortString HotelAdress; 
     }
 
     Entity Room
     {
-        Extends Hotels.Reservation;
-
-        Integer RoomNumber {Unique; Required;}
-        Reference Hotel {Detail;}
-        Reference RoomType {Detail;}
+        Integer RoomNumber; 
+        Reference Hotel ;
+        Reference RoomType ;
     }
     
     Entity RoomType
     {
-        ShortString TypeName {Required;}
-        Money RoomCostPerNight {Required;}
+        ShortString TypeName 
+        Money RoomCostPerNight 
     }
 
     Entity Reservation
     {
-        
-
-        Bool Reserved {Required;}
+        Bool Reserved 
         Date CheckIn;
         Date CheckOut;
         Reference Room;
-        
     }
     
     Entity Guest
